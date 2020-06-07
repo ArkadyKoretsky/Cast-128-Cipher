@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Runtime.Remoting;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,10 +22,13 @@ namespace Cast128_CS
     class Encryption
     {
         public const uint MOD2_32 = 2 << 31;
-        public const int KEYLENGTH = 128;
         public const int BLOCKLENGTH = 64;
-        public const int KEYSCOUNT = 32;
+        public const int KMLENGTH = 32;
         public const int ROUNDCOUNT = 16;
+        public const int Ia = 0;
+        public const int Ib = 1;
+        public const int Ic = 2;
+        public const int Id = 3;
 
         public struct Block
         {
@@ -109,7 +113,6 @@ namespace Cast128_CS
 
             return retBlocks;
         }
-
         private void MakeAllRounds(Block block)
         {
             for (int i = 0; i < 32; i++)
@@ -128,7 +131,6 @@ namespace Cast128_CS
                 MakeRound(i);
             }
         }
-
         private void MakeRound(int i)
         {
             current_L = prev_R;
@@ -148,46 +150,137 @@ namespace Cast128_CS
                 current_R = prev_L.Xor(retF3);
             }
         }
-
         private BitArray f3(BitArray prev_R, BitArray km, BitArray kr)
         {
+            //Type 3:  I = ((Kmi - D) <<< Kri)
+            //    f = ((S1[Ia] + S2[Ib]) ^ S3[Ic]) - S4[Id]
+
             throw new NotImplementedException();
         }
-
         private BitArray f2(BitArray prev_R, BitArray km, BitArray kr)
         {
+            //Type 2:  I = ((Kmi ^ D) <<< Kri)
+            //    f = ((S1[Ia] - S2[Ib]) + S3[Ic]) ^ S4[Id]
+
             throw new NotImplementedException();
         }
-
         private BitArray f1(BitArray prev_R, BitArray km, BitArray kr)
         {
-            BitArray I = myAdd(km, prev_R, 1);
+            //Type 1:  I = ((Kmi + D) <<< Kri)
+            //         f = ((S1[Ia] ^ S2[Ib]) - S3[Ic]) + S4[Id]
+
+
+            BitArray I = ShiftLeftBitArray(addBits(km,prev_R),kr);
+            BitArray[] Is = CreateIBits(I);
+            int[] bitValues = new int[1];
+            bitValues[0]= S1[Convert.ToInt32(ConvertBitarrayToByteArray(Is[Ia]))] ^ S2[Convert.ToInt32(ConvertBitarrayToByteArray(Is[Ib]))];
+            BitArray forXor = new BitArray(bitValues);
+
+            return ();
+
             throw new NotImplementedException();
+
         }
-        uint myAdd(BitArray a, BitArray b, int operation)
+
+        private BitArray[] CreateIBits(BitArray I)
         {
-            byte[] tmpbytes = new byte[4];
-            a.CopyTo(tmpbytes, 0);
-            uint a2 = BitConverter.ToUInt32(tmpbytes, 0);
-            b.CopyTo(tmpbytes, 0);
-            uint b2 = BitConverter.ToUInt32(tmpbytes, 0);
-            uint ret = 0;
-            switch (operation)
+            BitArray[] bitArrays = new BitArray[4];
+            bitArrays[Ia] = new BitArray(8);
+            bitArrays[Ib] = new BitArray(8);
+            bitArrays[Ic] = new BitArray(8);
+            bitArrays[Id] = new BitArray(8);
+
+            for (int i = 0; i < 8; i++)
             {
-                case 1:
-                    ret = (a2 + b2) % MOD2_32;
-                    break;
-                case 2:
-                    ret = (a2 ^ b2);
-                    break;
-                case 3:
-                    ret = (a2 - b2) % MOD2_32;
-                    break;
-                default:
-                    break;
+                bitArrays[Ia][i] = I[i];
+                bitArrays[Ib][i] = I[i + 8];
+                bitArrays[Ic][i] = I[i + 16];
+                bitArrays[Id][i] = I[i + 24];
+            }
+            return bitArrays;
+        }
+        private BitArray addBits(BitArray x, BitArray y)
+        {
+            int[] one = new int[1];
+            one[0] = 1;
+            BitArray oneInBit = new BitArray(one);
+            
+            // Iterate till there is no carry 
+            while (Convert.ToInt32(ConvertBitarrayToByteArray(y)) != 0)
+            {
+                // carry now contains common 
+                // set bits of x and y 
+                BitArray carry = x.And(y);
+
+                // Sum of bits of x and  
+                // y where at least one  
+                // of the bits is not set 
+                x = x.Xor(y);
+
+                // Carry is shifted by  
+                // one so that adding it  
+                // to x gives the required sum 
+                y = ShiftLeftBitArray(carry, oneInBit);
+            }
+            return x;
+
+        }
+        private BitArray subBits(BitArray x, BitArray y)
+        {
+            int[] one = new int[1];
+            one[0] = 1;
+            BitArray oneInBit = new BitArray(one);
+            // Iterate till there 
+            // is no carry 
+            while (Convert.ToInt32(ConvertBitarrayToByteArray(y)) != 0)
+            {
+
+                // borrow contains common  
+                // set bits of y and unset 
+                // bits of x 
+                BitArray borrow = x.Not().And(y);
+
+                // Subtraction of bits of x  
+                // and y where at least one 
+                // of the bits is not set 
+                x = x.Xor(y);
+
+                // Borrow is shifted by one  
+                // so that subtracting it from  
+                // x gives the required sum 
+                y = ShiftLeftBitArray(borrow, oneInBit);
             }
 
-            return ret;
+            return x;
+        }
+        private BitArray ShiftLeftBitArray(BitArray bits, BitArray kr)
+        {
+            BitArray retBitarray = new BitArray(bits);
+            BitArray forKeep = new BitArray(Convert.ToInt32(kr));
+
+            for (int i = 0; i < forKeep.Length; i++)
+            {
+                forKeep[i] = retBitarray[i];
+
+                for (int j = 1; j < retBitarray.Count; j++)
+                {
+                    retBitarray[j - 1] = retBitarray[j];
+                }
+            }
+            for (int k = retBitarray.Count - forKeep.Length; k < retBitarray.Count; k++)
+            {
+                retBitarray[k] = forKeep[k - (retBitarray.Count - forKeep.Length)];
+            }
+            return retBitarray;
+        }
+        private byte[] ConvertBitarrayToByteArray(BitArray bit)
+        {
+            byte[] v = new byte[bit.Length];
+            for (int i = 0; i < bit.Length; i++)
+            {
+                v[i] = Convert.ToByte(bit[i]);
+            }
+            return v;
         }
         private void WriteToUser(string v)
         {

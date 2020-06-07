@@ -5,3 +5,10 @@ C:\Users\User\source\repos\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\Cast128
 C:\Users\User\source\repos\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\Cast128_CS.pdb
 C:\Users\User\source\repos\Cast-128-Cipher\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.exe
 C:\Users\User\source\repos\Cast-128-Cipher\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.pdb
+C:\Users\User\Documents\GitHub\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\Cast128_CS.exe.config
+C:\Users\User\Documents\GitHub\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\Cast128_CS.exe
+C:\Users\User\Documents\GitHub\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\Cast128_CS.pdb
+C:\Users\User\Documents\GitHub\Cast-128-Cipher\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.csprojAssemblyReference.cache
+C:\Users\User\Documents\GitHub\Cast-128-Cipher\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\Cast-128-Cipher\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.exe
+C:\Users\User\Documents\GitHub\Cast-128-Cipher\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.pdb

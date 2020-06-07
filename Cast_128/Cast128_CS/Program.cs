@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,8 @@ namespace Cast128_CS
     {
         static void Main(string[] args)
         {
-
+            Encryption e = new Encryption();
+            e.Encrypt("Matih.txt");
         }
     }
 }
