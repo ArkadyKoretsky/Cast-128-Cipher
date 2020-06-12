@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Cast128_CS
 {
@@ -11,8 +12,12 @@ namespace Cast128_CS
     {
         static void Main(string[] args)
         {
-            Encryption e = new Encryption();
-            e.Encrypt("Matih.txt");
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new LoginForm());
+
+            //Encryption e = new Encryption();
+            //e.Encrypt("Matih.txt");
         }
     }
 }

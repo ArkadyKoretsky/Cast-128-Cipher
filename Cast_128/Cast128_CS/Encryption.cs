@@ -176,7 +176,7 @@ namespace Cast128_CS
             bitValues[0]= S1[Convert.ToInt32(ConvertBitarrayToByteArray(Is[Ia]))] ^ S2[Convert.ToInt32(ConvertBitarrayToByteArray(Is[Ib]))];
             BitArray forXor = new BitArray(bitValues);
 
-            return ();
+           // return ();
 
             throw new NotImplementedException();
 
