@@ -1,0 +1,99 @@
+302962915,Shalev Kubi,An Application for secure email exchange: including secure canal generation Diffie-Hellman for delivery of the secrect key encryption with AES and signature EL-GAMAL,1
+308035542,Avihai Uksusman,An Application for secure email exchange: including secure canal generation Diffie-Hellman for delivery of the secrect key encryption with AES and signature EL-GAMAL,1
+311177802,Aviv Leder,An Application for secure email exchange: including secure canal generation Diffie-Hellman for delivery of the secrect key encryption with AES and signature EL-GAMAL,1
+305251175,Sariel Sofer,An Application for secure email exchange: including secure canal generation Diffie-Hellman for delivery of the secrect key encryption with AES and signature EL-GAMAL,1
+308051846,Raz Peretz,Secured chat application password entry authentication with private key and Hash encryption and decryption with algorithm Serpent,2
+312049950,Dan Kirshenbaum,Secured chat application password entry authentication with private key and Hash encryption and decryption with algorithm Serpent,2
+308073899,Elad Leibovich,Secured chat application password entry authentication with private key and Hash encryption and decryption with algorithm Serpent,2
+310458559,Roman Safovich,Key exchange Diffie-Hellman with elliptic curve having a huge number of the elements and encryption-decryption with RC5,3
+312578123,Yakir Cohen,Key exchange Diffie-Hellman with elliptic curve having a huge number of the elements and encryption-decryption with RC5,3
+204602650,Shlomo Tzarfati,Key exchange Diffie-Hellman with elliptic curve having a huge number of the elements and encryption-decryption with RC5,3
+318869187,Sari Khamis,Secure delivery of gray images creation of the secret canal Diffie-Hellman encryption-decryption with RC6 and CBC mode,4
+205898513,Jeries Hadad,Secure delivery of gray images creation of the secret canal Diffie-Hellman encryption-decryption with RC6 and CBC mode,4
+318428158,Fadi Baransi,Secure delivery of gray images creation of the secret canal Diffie-Hellman encryption-decryption with RC6 and CBC mode,4
+316028364,Tony Nikola,Secure delivery of gray images creation of the secret canal Diffie-Hellman encryption-decryption with RC6 and CBC mode,4
+318294931,Dina Choshha,An Application for secure email exchange: including secure canal generation RSA for delivery of the secret key encryption-decryption with Blowfish+signature,5
+305487936,Maayan Mitrani,An Application for secure email exchange: including secure canal generation RSA for delivery of the secret key encryption-decryption with Blowfish+signature,5
+313227928,Reem Hamed,An Application for secure email exchange: including secure canal generation RSA for delivery of the secret key encryption-decryption with Blowfish+signature,5
+205807308,Monera Saad,An Application for secure email exchange: including secure canal generation RSA for delivery of the secret key encryption-decryption with Blowfish+signature,5
+315891549,Miras Safadi,Storing wave collection encryption-decryption by Twofish cypher. Entry with a password the identification with a signed hash funcion,6
+315060103,Rani Hassan,Storing wave collection encryption-decryption by Twofish cypher. Entry with a password the identification with a signed hash funcion,6
+313925141,Andrey Lipkin,Storing wave collection encryption-decryption by Twofish cypher. Entry with a password the identification with a signed hash funcion,6
+316029164,Majd Zaatri,Secure remote acceess to dataset of hash of files (hash functions calculated for image files to be function for this calculation) Password access to the data and to the key with possibility decrypt a file and compare the result. An image of the hash must be enrypted by TEA and hash caculed to the decrypted image,7
+311163257,Lowis kayal,Secure remote acceess to dataset of hash of files (hash functions calculated for image files to be function for this calculation) Password access to the data and to the key with possibility decrypt a file and compare the result. An image of the hash must be enrypted by TEA and hash caculed to the decrypted image,7
+316191899,fadi habeeb,Secure remote acceess to dataset of hash of files (hash functions calculated for image files to be function for this calculation) Password access to the data and to the key with possibility decrypt a file and compare the result. An image of the hash must be enrypted by TEA and hash caculed to the decrypted image,7
+315889196,jeries elias,Secure remote acceess to dataset of hash of files (hash functions calculated for image files to be function for this calculation) Password access to the data and to the key with possibility decrypt a file and compare the result. An image of the hash must be enrypted by TEA and hash caculed to the decrypted image,7
+302658711,Adi Dinner,Access to encrypted dataset of a store customers. To grant password access just for two people together from different places. Data are encrypted by algorithm Twofish algorithm. Decryption is jointly provided by two people with a key constructed by DH and comparison the result using encrypted hash.,8
+305046492,Inon Bitton,Access to encrypted dataset of a store customers. To grant password access just for two people together from different places. Data are encrypted by algorithm Twofish algorithm. Decryption is jointly provided by two people with a key constructed by DH and comparison the result using encrypted hash.,8
+305112732,Itzik Mizrachi,Access to encrypted dataset of a store customers. To grant password access just for two people together from different places. Data are encrypted by algorithm Twofish algorithm. Decryption is jointly provided by two people with a key constructed by DH and comparison the result using encrypted hash.,8
+305718371,Yarin Belker,Access to encrypted dataset of a store customers. To grant password access just for two people together from different places. Data are encrypted by algorithm Twofish algorithm. Decryption is jointly provided by two people with a key constructed by DH and comparison the result using encrypted hash.,8
+318210077,Yana Irani,Access to encrypted dataset of songs. Password access with two levels to play and to download. The files are encrypted by means of Triple DES. For download a two steps identification is requested (using and verification of the second Password),9
+201275443,Saleh Kasem,Access to encrypted dataset of songs. Password access with two levels to play and to download. The files are encrypted by means of Triple DES. For download a two steps identification is requested (using and verification of the second Password),9
+315715649,Ahmad Massalha,Access to encrypted dataset of songs. Password access with two levels to play and to download. The files are encrypted by means of Triple DES. For download a two steps identification is requested (using and verification of the second Password),9
+318223898,Mahmoud Omar,Access to encrypted dataset of songs. Password access with two levels to play and to download. The files are encrypted by means of Triple DES. For download a two steps identification is requested (using and verification of the second Password),9
+311646848,Vladimir Pikovski,Secure payment with server identification using RSA encryption-decryption with TripleDES checking with SHA-256,10
+334017688,Pavel Liberman,Secure payment with server identification using RSA encryption-decryption with TripleDES checking with SHA-256,10
+37026523,Tal Roth,Secure payment with server identification using RSA encryption-decryption with TripleDES checking with SHA-256,10
+201094505,Doron Tuchman,Secure payment with server identification using RSA encryption-decryption with TripleDES checking with SHA-256,10
+203957295,omri braymok,Secure payment with server identification using Rabin signature encryption-decryption with Serpent,11
+302658935,haim (hai) sidi,Secure payment with server identification using Rabin signature encryption-decryption with Serpent,11
+311178305,dor dahan,Secure payment with server identification using Rabin signature encryption-decryption with Serpent,11
+203761374,Kfir Willfand,An Application for secure email exchange: including secure canal generating DH on elliptic curve for delivery of the secret key encryption-decryption with Serpent,12
+311283634,Tal Tolochinsky,An Application for secure email exchange: including secure canal generating DH on elliptic curve for delivery of the secret key encryption-decryption with Serpent,12
+308344555,Dvir Kovalio,An Application for secure email exchange: including secure canal generating DH on elliptic curve for delivery of the secret key encryption-decryption with Serpent,12
+313572604,Zehavit Otmazgin,An Application for secure email exchange: including secure canal generating DH on elliptic curve for delivery of the secret key encryption-decryption with Serpent,12
+336489240,Nataliya Kamenyeva,Key exchange by DH and encryption-decryption with Magenta,13
+319611604,Vitali Layzerman,Key exchange by DH and encryption-decryption with Magenta,13
+312426976,Sapir Cohen,Secure delivery of the gray images creation a secret canal using Merkle-Hellman knapsack encryption-decryption with Xtea and CBC signature with Rabin,14
+203995501,Sagi Leyba,Secure delivery of the gray images creation a secret canal using Merkle-Hellman knapsack encryption-decryption with Xtea and CBC signature with Rabin,14
+308408558,Itamar Gino,Secure delivery of the gray images creation a secret canal using Merkle-Hellman knapsack encryption-decryption with Xtea and CBC signature with Rabin,14
+203498597,Dor Kovachi,Secure delivery of the gray images creation a secret canal using Merkle-Hellman knapsack encryption-decryption with Xtea and CBC signature with Rabin,14
+307980854,jameel othman,Secured chat application. Password entry in two lavels to read and to write authencation with private key and Hash encryption and Decription with Skipjack,15
+205512734,ammar khutaba,Secured chat application. Password entry in two lavels to read and to write authencation with private key and Hash encryption and Decription with Skipjack,15
+205495021,omar rabah,Secured chat application. Password entry in two lavels to read and to write authencation with private key and Hash encryption and Decription with Skipjack,15
+316202829,badera kadry,Secured chat application. Password entry in two lavels to read and to write authencation with private key and Hash encryption and Decription with Skipjack,15
+318235553,Ahmad Kaiss,A secure chat application which uses FROG in CBC mode for the encryption and RSA for the public key cryptography and signature+Password identification and key distribution,16
+206756272,Jawad Rammal,A secure chat application which uses FROG in CBC mode for the encryption and RSA for the public key cryptography and signature+Password identification and key distribution,16
+313282196,Sally Sarboukh,A secure chat application which uses FROG in CBC mode for the encryption and RSA for the public key cryptography and signature+Password identification and key distribution,16
+319006888,Razie fadool,A secure chat application which uses FROG in CBC mode for the encryption and RSA for the public key cryptography and signature+Password identification and key distribution,16
+307862557,Bat-El Tabachnick,Hybrid scheme including transmission of the key and signature by means of RSA generating key by means encrypted random generator and encryption-decryption by RC6,17
+320910722,Dennis Zabolotny,Hybrid scheme including transmission of the key and signature by means of RSA generating key by means encrypted random generator and encryption-decryption by RC6,17
+324618107,Alexey Smirnov,Hybrid scheme including transmission of the key and signature by means of RSA generating key by means encrypted random generator and encryption-decryption by RC6,17
+201242690,Matan Felsdman,Hybrid scheme including transmission of the key and signature by means of RSA generating key by means encrypted random generator and encryption-decryption by RC6,17
+307841569,Ibrahem Mrisat,A secure chat application which uses AES-128 in CFB mode for the encryption + Rabin signature + Password idenfication and key distribution,18
+318489598,Aroob daqduqi,A secure chat application which uses AES-128 in CFB mode for the encryption + Rabin signature + Password idenfication and key distribution,18
+206187544,Amir Amara,A secure chat application which uses AES-128 in CFB mode for the encryption + Rabin signature + Password idenfication and key distribution,18
+316271501,Abeer hasan,A secure chat application which uses AES-128 in CFB mode for the encryption + Rabin signature + Password idenfication and key distribution,18
+307964932,Oriel Gilo,Encrypted chat messages based on Android platform with Cloud Database (the technology is on response of the students and will be reviewed and examinated from the security point of view),19
+206216665,Liron David,Encrypted chat messages based on Android platform with Cloud Database (the technology is on response of the students and will be reviewed and examinated from the security point of view),19
+308554815,Naor Ohana,Encrypted chat messages based on Android platform with Cloud Database (the technology is on response of the students and will be reviewed and examinated from the security point of view),19
+204381503,Or Magogi,Encrypted chat messages based on Android platform with Cloud Database (the technology is on response of the students and will be reviewed and examinated from the security point of view),19
+305324618,Asaf Ben Shabat,Implementation of the Enigma protocol as a part of the network activity + key generation and key distribution Digital signature using El-gamal. The project is intended to improve the Enigma obstacles,20
+311486427,Tal Vakrat,Implementation of the Enigma protocol as a part of the network activity + key generation and key distribution Digital signature using El-gamal. The project is intended to improve the Enigma obstacles,20
+315654962,Sami Odeh,Implementation of the Enigma protocol as a part of the network activity + key generation and key distribution Digital signature using El-gamal. The project is intended to improve the Enigma obstacles,20
+307884890,Or Eliyahu,Implementation of the Enigma protocol as a part of the network activity + key generation and key distribution Digital signature using El-gamal. The project is intended to improve the Enigma obstacles,20
+315022517,Adam Mahameed,Secure transmission of songs files. Creation of a secure chanal with  Merkle-Hellman knapsack + Key transmision and identication. Recieveing of an engypted song file and checking of its validity. Encrytion-decryption by algorithm IDEA,21
+316544345,Alaa Grable,Secure transmission of songs files. Creation of a secure chanal with  Merkle-Hellman knapsack + Key transmision and identication. Recieveing of an engypted song file and checking of its validity. Encrytion-decryption by algorithm IDEA,21
+206334690,Karam Abo Mokh,Secure transmission of songs files. Creation of a secure chanal with  Merkle-Hellman knapsack + Key transmision and identication. Recieveing of an engypted song file and checking of its validity. Encrytion-decryption by algorithm IDEA,21
+312332620,Aviv Eitam,Sending e-mail securely using DES key transmision by means elicptic DH and signature El-Gamal,22
+312335524,Ori Burshtein,Sending e-mail securely using DES key transmision by means elicptic DH and signature El-Gamal,22
+316982644,Anton Grudsky,Sending e-mail securely using DES key transmision by means elicptic DH and signature El-Gamal,22
+203639166,Idan Kalderon,Encryption for payment application using AES algorithm and secure channel with Diffie-Hellman and electronic signature using Hash function,23
+204110506,Lotem Eliyahu,Encryption for payment application using AES algorithm and secure channel with Diffie-Hellman and electronic signature using Hash function,23
+204722946,Sapir Hochma,Encryption for payment application using AES algorithm and secure channel with Diffie-Hellman and electronic signature using Hash function,23
+203969316,Ariel Avitbul,Encryption-decryption and sign using EL-GAMAl in a large elliptic group,24
+308574813,Guy Levy,Encryption-decryption and sign using EL-GAMAl in a large elliptic group,24
+204190516,Mati Halfa,Storing of the encrypted database. You must provide a secure access to the data on two levels: to read and to edit. Encryption-decryption  provided by CAST-128,25
+316311547,Shoham Gamliel,Storing of the encrypted database. You must provide a secure access to the data on two levels: to read and to edit. Encryption-decryption  provided by CAST-128,25
+311008361,Arkady Koretsky,Storing of the encrypted database. You must provide a secure access to the data on two levels: to read and to edit. Encryption-decryption  provided by CAST-128,25
+312148687,eyal basis,Creation a secure canal using the RSA algorithm and distribution in a network having more of 2 points encrypted by AES messages with its possible decryption,26
+311154322,molham halaby,Creation a secure canal using the RSA algorithm and distribution in a network having more of 2 points encrypted by AES messages with its possible decryption,26
+207285826,anan mshelh,Creation a secure canal using the RSA algorithm and distribution in a network having more of 2 points encrypted by AES messages with its possible decryption,26
+318741964,Soaad amer,Creation a secure canal using the RSA algorithm and distribution in a network having more of 2 points encrypted by AES messages with its possible decryption,26
+305698102,Asher Castro,To be named,27
+317405546,Anastasia Afanasenko,To be named,27
+322076894,Christina Kipnis,To be named,27
+305284457,Or Levi,To be named,27
+315679795,Dana Kazatchinski,Secure emal sending using indentification by DSS enryption of data by means Camellia,28
+311155659,Ido Finzy,Secure emal sending using indentification by DSS enryption of data by means Camellia,28
+314599531,Vladislav Belousov,Secure emal sending using indentification by DSS enryption of data by means Camellia,28
