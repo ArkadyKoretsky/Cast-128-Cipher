@@ -29,51 +29,60 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Algorithm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GroupNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.UpdateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.FullName,
-            this.Algorithm,
-            this.GroupNumber});
-            this.dataGridView1.Location = new System.Drawing.Point(1, 1);
+            this.dataGridView1.Location = new System.Drawing.Point(-1, 81);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1142, 668);
+            this.dataGridView1.Size = new System.Drawing.Size(983, 589);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // ID
+            // AddButton
             // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
+            this.AddButton.Location = new System.Drawing.Point(157, 26);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(134, 34);
+            this.AddButton.TabIndex = 1;
+            this.AddButton.Text = "Add";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
-            // FullName
+            // DeleteButton
             // 
-            this.FullName.HeaderText = "Full Name";
-            this.FullName.Name = "FullName";
+            this.DeleteButton.Location = new System.Drawing.Point(397, 26);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(145, 34);
+            this.DeleteButton.TabIndex = 2;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
-            // Algorithm
+            // UpdateButton
             // 
-            this.Algorithm.HeaderText = "Algorithm";
-            this.Algorithm.Name = "Algorithm";
-            // 
-            // GroupNumber
-            // 
-            this.GroupNumber.HeaderText = "GroupNumber";
-            this.GroupNumber.Name = "GroupNumber";
+            this.UpdateButton.Location = new System.Drawing.Point(630, 26);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Size = new System.Drawing.Size(137, 34);
+            this.UpdateButton.TabIndex = 3;
+            this.UpdateButton.Text = "Update";
+            this.UpdateButton.UseVisualStyleBackColor = true;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // DataBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1145, 670);
+            this.ClientSize = new System.Drawing.Size(983, 670);
+            this.Controls.Add(this.UpdateButton);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.AddButton);
             this.Controls.Add(this.dataGridView1);
             this.Name = "DataBase";
             this.Text = "Data Base";
@@ -86,9 +95,8 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Algorithm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GroupNumber;
+        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.Button UpdateButton;
     }
 }

@@ -14,7 +14,7 @@ namespace Cast128_CS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Application.Run(new DataBase());
 
             //Encryption e = new Encryption();
             //e.Encrypt("Matih.txt");

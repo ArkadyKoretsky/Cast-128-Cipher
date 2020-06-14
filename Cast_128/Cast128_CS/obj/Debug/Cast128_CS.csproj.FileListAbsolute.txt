@@ -22,3 +22,14 @@ C:\cast128\Cast_128\Cast128_CS\bin\Debug\Cast128_CS.exe
 C:\cast128\Cast_128\Cast128_CS\bin\Debug\Cast128_CS.pdb
 C:\cast128\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.exe
 C:\cast128\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.pdb
+D:\Cryptography\Repository\Cast_128\Cast128_CS\bin\Debug\Cast128_CS.exe.config
+D:\Cryptography\Repository\Cast_128\Cast128_CS\bin\Debug\Cast128_CS.exe
+D:\Cryptography\Repository\Cast_128\Cast128_CS\bin\Debug\Cast128_CS.pdb
+D:\Cryptography\Repository\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.csprojAssemblyReference.cache
+D:\Cryptography\Repository\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.DataBase.resources
+D:\Cryptography\Repository\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.LoginForm.resources
+D:\Cryptography\Repository\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.Properties.Resources.resources
+D:\Cryptography\Repository\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.csproj.GenerateResource.cache
+D:\Cryptography\Repository\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.csproj.CoreCompileInputs.cache
+D:\Cryptography\Repository\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.exe
+D:\Cryptography\Repository\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.pdb
