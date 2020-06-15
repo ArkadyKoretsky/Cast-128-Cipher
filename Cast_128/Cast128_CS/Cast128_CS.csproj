@@ -46,6 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Encryption.cs" />
+    <Compile Include="AddNewRow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewRow.Designer.cs">
+      <DependentUpon>AddNewRow.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddNewRow.resx">
+      <DependentUpon>AddNewRow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataBase.resx">
       <DependentUpon>DataBase.cs</DependentUpon>
     </EmbeddedResource>

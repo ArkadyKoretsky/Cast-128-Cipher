@@ -14,13 +14,17 @@ namespace Cast128_CS
     public partial class DataBase : Form
     {
         DataTable dataTable;
+        string dataBasePath;
+        List<string> ids;
 
         public DataBase()
         {
             InitializeComponent();
             dataTable = new DataTable();
+            ids = new List<string>();
             InitDataTable();
             dataGridView1.DataSource = dataTable;
+            dataBasePath = @"D:\Cryptography\Repository\projects.csv";
         }
 
         private void InitDataTable()
@@ -33,11 +37,11 @@ namespace Cast128_CS
 
         private void DataBase_Load(object sender, EventArgs e)
         {
-            string path = @"D:\Cryptography\Repository\projects.csv";
-            string[] students = File.ReadAllLines(path);
-            foreach(string student in students)
+            string[] students = File.ReadAllLines(dataBasePath);
+            foreach (string student in students)
             {
                 string[] row = student.Split(',');
+                ids.Add(row[0]);
                 dataTable.Rows.Add(row);
             }
         }
@@ -49,7 +53,8 @@ namespace Cast128_CS
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-
+            AddNewRow newRow = new AddNewRow(ref ids, ref dataTable, dataBasePath);
+            newRow.Show();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
