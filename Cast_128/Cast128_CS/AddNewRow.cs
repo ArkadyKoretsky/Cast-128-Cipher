@@ -45,7 +45,7 @@ namespace Cast128_CS
             {
                 dataTable.Rows.Add(newStudent);
                 ids.Add(newStudent[(int)columns.id]);
-                File.AppendAllText(dataBasePath, "\n" + string.Join(",", newStudent));
+                //File.AppendAllText(dataBasePath, "\n" + string.Join(",", newStudent));
                 MessageBox.Show("Student added successfully", "Success");
                 ClearFields();
             }

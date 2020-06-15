@@ -16,6 +16,7 @@ namespace Cast128_CS
         DataTable dataTable;
         string dataBasePath;
         List<string> ids;
+        string[] columns = { "ID", "Full Name", "Algorithm", "Group Number" };
 
         public DataBase()
         {
@@ -29,10 +30,8 @@ namespace Cast128_CS
 
         private void InitDataTable()
         {
-            dataTable.Columns.Add("ID");
-            dataTable.Columns.Add("Full Name");
-            dataTable.Columns.Add("Algorithm");
-            dataTable.Columns.Add("Group Number");
+            foreach (string column in columns)
+                dataTable.Columns.Add(column);
         }
 
         private void DataBase_Load(object sender, EventArgs e)
@@ -59,12 +58,38 @@ namespace Cast128_CS
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    ids.Remove(row.Cells[0].Value.ToString());
+                    dataGridView1.Rows.RemoveAt(row.Index);
+                }
+            }
+            else
+                MessageBox.Show("Please select rows", "Error");
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void DataBase_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UpdateDataBase();
+        }
+
+        private void UpdateDataBase()
+        {
+            File.WriteAllText(dataBasePath, null);
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string[] dataRow = new string[4];
+                for (int i = 0; i < columns.Length; i++)
+                    dataRow[i] = row[columns[i]].ToString();
+                File.AppendAllText(dataBasePath, string.Join(",", dataRow) + "\n");
+            }
         }
     }
 }

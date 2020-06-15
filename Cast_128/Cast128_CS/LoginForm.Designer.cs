@@ -53,6 +53,7 @@
             this.PassowrdTextBox.Size = new System.Drawing.Size(234, 33);
             this.PassowrdTextBox.TabIndex = 1;
             this.PassowrdTextBox.UseSystemPasswordChar = true;
+            this.PassowrdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(LoginForm_KeyDown);
             // 
             // LoginButton
             // 
@@ -116,7 +117,6 @@
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

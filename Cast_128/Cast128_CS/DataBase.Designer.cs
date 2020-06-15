@@ -92,7 +92,7 @@
             this.Load += new System.EventHandler(this.DataBase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataBase_FormClosing);
         }
 
         #endregion
