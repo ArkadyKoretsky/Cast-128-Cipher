@@ -12,7 +12,16 @@ C:\Users\User\Documents\GitHub\Cast-128-Cipher\Cast_128\Cast128_CS\obj\Debug\Cas
 C:\Users\User\Documents\GitHub\Cast-128-Cipher\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\GitHub\Cast-128-Cipher\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.exe
 C:\Users\User\Documents\GitHub\Cast-128-Cipher\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.pdb
-C:\Users\shoha\Desktop\project\mine\Cast-128-Cipher\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.csprojResolveAssemblyReference.cache
 C:\Users\shoha\Desktop\project\mine\Cast-128-Cipher\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.csproj.CoreCompileInputs.cache
 C:\Users\shoha\Desktop\project\mine\Cast-128-Cipher\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.exe
 C:\Users\shoha\Desktop\project\mine\Cast-128-Cipher\Cast_128\Cast128_CS\obj\Debug\Cast128_CS.pdb
+C:\Users\shoha\Desktop\project\mine\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\Cast128_CS.exe.config
+C:\Users\shoha\Desktop\project\mine\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\Cast128_CS.exe
+C:\Users\shoha\Desktop\project\mine\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\Cast128_CS.pdb
+C:\Users\shoha\Desktop\project\mine\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\AsyncIO.dll
+C:\Users\shoha\Desktop\project\mine\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\NetMQ.dll
+C:\Users\shoha\Desktop\project\mine\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\shoha\Desktop\project\mine\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\AsyncIO.pdb
+C:\Users\shoha\Desktop\project\mine\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\NetMQ.pdb
+C:\Users\shoha\Desktop\project\mine\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\NetMQ.xml
+C:\Users\shoha\Desktop\project\mine\Cast-128-Cipher\Cast_128\Cast128_CS\bin\Debug\System.Numerics.Vectors.xml

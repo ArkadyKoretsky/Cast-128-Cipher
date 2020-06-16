@@ -52,13 +52,18 @@ namespace Cast128_CS
         public uint[] km = new uint[16];
         //public uint[] kruint = new uint[16];
         public byte[] kr = new byte[16];
-
+        int key_len=0; 
 
         public KeysCreator(String mainKey)
         {
             this.mainKey = mainKey;
 
-            binKey = finalGetBinaryValue(this.mainKey);//convert  binart key
+            //binKey = finalGetBinaryValue(this.mainKey);//convert  binart key
+            Boolean val=correct_len(this.mainKey);
+            if (!val) throw new System.ArgumentException("Too small argumet", "mainKey");
+            // { "no in the term"}
+            //Console.WriteLine("Too small key");
+            padding();
             /*
             x0x1x2x3[4] = Convert.ToUInt32(binKey.Substring(0, 32), 2);
             x4x5x6x7[4] = Convert.ToUInt32(binKey.Substring(32, 32), 2);
@@ -150,19 +155,34 @@ namespace Cast128_CS
         {
             finArr = "";
             String result = getBinaryValue(num);
-            return padding(result);
+            //return padding(result);
+            return result;
 
         }
 
-        String padding(String num)
+        Boolean correct_len(String key)
         {
-            int len = num.Length;
-            int pad_len = 128 - len;
-            String str = "";
-            for (int i = 0; i < pad_len; i++)
-                str = str + '0';
+            binKey =finalGetBinaryValue(this.mainKey);
+            key_len =binKey.Length;
+            //padding();
+            if (key_len <= 80 && key_len >= 40)
+                return true;
+             else return false;
+        }
 
-            return str + num;
+         void padding()
+        {
+            int len = binKey.Length;
+            key_len = len;
+            int pad_len = 128 - len;
+            if (pad_len > 0)
+            {
+                String str = "";
+                for (int i = 0; i < pad_len; i++)
+                    str = str + '0';
+                binKey = str + binKey;
+                //return str + num;
+            }
         }
 
         String getBinaryValue(String num)
