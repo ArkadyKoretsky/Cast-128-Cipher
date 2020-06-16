@@ -125,15 +125,6 @@ namespace Cast128_CS
 
         }
 
-        void x(uint[] b0b1b2b3)
-        {
-
-            b0b1b2b3[0] = b0b1b2b3[4] & 255;
-            b0b1b2b3[1] = (b0b1b2b3[4] & 65280) >> 8;
-            b0b1b2b3[2] = (b0b1b2b3[4] & 16711680) >> 16;
-            b0b1b2b3[3] = (b0b1b2b3[4] & 4278190080) >> 24;
-
-        }
 
         void SeparateByte(ref uint b0, ref uint b1, ref uint b2, ref uint b3, uint b0b1b2b3)
         {

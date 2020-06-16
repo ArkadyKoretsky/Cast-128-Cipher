@@ -11,7 +11,7 @@ namespace Cast128_CS
     {
         static void Main(string[] args)
         {
-            Encryption e = new Encryption();
+            Cast_128 e = new Cast_128();
             e.Encrypt("Matih.txt");
         }
     }
