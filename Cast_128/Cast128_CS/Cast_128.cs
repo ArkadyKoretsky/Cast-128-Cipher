@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Cast128_CS
 {
-    class Encryption
+    class Cast_128
     {
         public readonly int roundCount = 16;
 
@@ -37,7 +37,7 @@ namespace Cast128_CS
         int[] type2 = { 2, 5, 8, 11, 14 };
         //int[] type3 = { 3, 6, 9, 12, 15 };
 
-        public Encryption()
+        public Cast_128()
         {
         }
         public string RunCast128(string inputfileName,string outputfileName, uint key,bool toDecryptFile=false)
