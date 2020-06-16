@@ -16,7 +16,7 @@ namespace Cast128_CS
         List<string> ids;
         DataTable dataTable;
         string dataBasePath;
-        enum columns { id, fullName, algorithm, groupNumber };
+        enum columns { id, fullName};
 
         public AddNewRow(ref List<string> ids, ref DataTable dataTable, string dataBasePath)
         {
@@ -28,12 +28,26 @@ namespace Cast128_CS
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            string[] newStudent = new string[4];
+            ValidateStudent();
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void AddForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                ValidateStudent();
+        }
+
+        private void ValidateStudent()
+        {
+            string[] newStudent = new string[2];
 
             newStudent[(int)columns.id] = this.IdTextBox.Text;
             newStudent[(int)columns.fullName] = this.FullNameTextBox.Text;
-            newStudent[(int)columns.algorithm] = this.AlgorithmTextBox.Text;
-            newStudent[(int)columns.groupNumber] = this.GroupNumber.Value.ToString();
 
             if (newStudent.Contains("") || newStudent.Contains(null))
                 MessageBox.Show("Please fill all the fields", "Error");
@@ -48,19 +62,13 @@ namespace Cast128_CS
                 MessageBox.Show("Student added successfully", "Success");
                 ClearFields();
             }
-        }
 
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void ClearFields()
         {
             this.IdTextBox.Text = "";
             this.FullNameTextBox.Text = "";
-            this.AlgorithmTextBox.Text = "";
-            this.GroupNumber.Value = 1;
         }
     }
 }

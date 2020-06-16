@@ -14,9 +14,9 @@ namespace Cast128_CS
     public partial class DataBase : Form
     {
         DataTable dataTable;
-        string dataBasePath;
+        string dataBaseFile;
         List<string> ids;
-        string[] columns = { "ID", "Full Name", "Algorithm", "Group Number" };
+        string[] columns = { "ID", "Full Name"};
 
         public DataBase()
         {
@@ -25,7 +25,7 @@ namespace Cast128_CS
             ids = new List<string>();
             InitDataTable();
             dataGridView1.DataSource = dataTable;
-            dataBasePath = @"D:\Cryptography\Repository\projects.csv";
+            dataBaseFile = "students.csv";
         }
 
         private void InitDataTable()
@@ -36,7 +36,7 @@ namespace Cast128_CS
 
         private void DataBase_Load(object sender, EventArgs e)
         {
-            string[] students = File.ReadAllLines(dataBasePath);
+            string[] students = File.ReadAllLines(dataBaseFile);
             foreach (string student in students)
             {
                 string[] row = student.Split(',');
@@ -52,7 +52,7 @@ namespace Cast128_CS
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            AddNewRow newRow = new AddNewRow(ref ids, ref dataTable, dataBasePath);
+            AddNewRow newRow = new AddNewRow(ref ids, ref dataTable, dataBaseFile);
             newRow.Show();
         }
 
@@ -90,13 +90,13 @@ namespace Cast128_CS
 
         private void UpdateDataBase()
         {
-            File.WriteAllText(dataBasePath, null);
+            File.WriteAllText(dataBaseFile, null);
             foreach (DataRow row in dataTable.Rows)
             {
-                string[] dataRow = new string[4];
+                string[] dataRow = new string[columns.Length];
                 for (int i = 0; i < columns.Length; i++)
                     dataRow[i] = row[columns[i]].ToString();
-                File.AppendAllText(dataBasePath, string.Join(",", dataRow) + "\n");
+                File.AppendAllText(dataBaseFile, string.Join(",", dataRow) + "\n");
             }
         }
     }

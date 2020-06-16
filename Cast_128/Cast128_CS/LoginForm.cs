@@ -13,13 +13,13 @@ namespace Cast128_CS
 {
     public partial class LoginForm : Form
     {
-        string UsersDBPath;
+        string UsersDBFile;
         Thread thread;
 
         public LoginForm()
         {
             InitializeComponent();
-            UsersDBPath = @"D:\Cryptography\Repository\users.csv";
+            UsersDBFile = "users.csv";
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace Cast128_CS
 
         private void LoginVerification()
         {
-            string[] users = File.ReadAllLines(UsersDBPath);
+            string[] users = File.ReadAllLines(UsersDBFile);
             bool wrongUserNameOrPassword = true;
             foreach (string user in users)
             {
