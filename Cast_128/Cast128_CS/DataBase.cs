@@ -72,7 +72,15 @@ namespace Cast128_CS
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-
+            try 
+            {
+                UpdateDataBase();
+                MessageBox.Show("Data base updated successfully", "Success");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Error");
+            }
         }
 
         private void DataBase_FormClosing(object sender, FormClosingEventArgs e)
