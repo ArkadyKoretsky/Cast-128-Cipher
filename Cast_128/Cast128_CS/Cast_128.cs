@@ -83,27 +83,27 @@ namespace Cast128_CS
                 #region Write To Output File
                 //matih
                 //add message to if exists outputfileName
-                if (File.Exists(outputfileName))
-                {
-                    DialogResult d =MessageBox.Show("There is already file with the name " + outputfileName + "\n do you want to replace it?",
-                        "save output file", MessageBoxButtons.YesNo);
-                    if (d==DialogResult.Yes)
-                    {
-                        File.Delete(outputfileName);
-                    }
-                    else
-                    {
-                        return "Change out put name file";
-                    }
-                }
-                using (StreamWriter sw = File.CreateText(outputfileName))
-                {
-                    foreach (Block block in encrypredBlocks)
-                    {
-                        sw.Write(block.msg[0]);
-                        sw.Write(block.msg[1]);
-                    }
-                }
+                //if (File.Exists(outputfileName))
+                //{
+                //    DialogResult d =MessageBox.Show("There is already file with the name " + outputfileName + "\n do you want to replace it?",
+                //        "save output file", MessageBoxButtons.YesNo);
+                //    if (d==DialogResult.Yes)
+                //    {
+                //        File.Delete(outputfileName);
+                //    }
+                //    else
+                //    {
+                //        return "Change out put name file";
+                //    }
+                //}
+                //using (StreamWriter sw = File.CreateText(outputfileName))
+                //{
+                //    foreach (Block block in encrypredBlocks)
+                //    {
+                //        sw.Write(block.msg[0]);
+                //        sw.Write(block.msg[1]);
+                //    }
+                //}
 
                 #endregion
 

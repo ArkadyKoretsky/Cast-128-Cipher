@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -15,6 +14,7 @@ namespace Cast128_CS
     public partial class LoginForm : Form
     {
         string UsersDBFile;
+        string password;
         Thread thread;
 
         public LoginForm()
@@ -56,7 +56,8 @@ namespace Cast128_CS
             foreach (string user in users)
             {
                 string[] userData = user.Split(',');
-                if (UsernameTextBox.Text == userData[0] && PassowrdTextBox.Text == userData[1])
+                password = PassowrdTextBox.Text;
+                if (UsernameTextBox.Text == userData[0] && password.GetHashCode().ToString() == userData[1])
                 {
                     wrongUserNameOrPassword = false;
                     this.Close();
@@ -68,6 +69,11 @@ namespace Cast128_CS
             }
             if (wrongUserNameOrPassword)
                 MessageBox.Show("Wrong user name or password", "Error");
+        }
+
+        public override int GetHashCode()
+        {
+            return 2049348873 + EqualityComparer<string>.Default.GetHashCode(password);
         }
     }
 }
