@@ -13,19 +13,28 @@ namespace Cast128_CS
 {
     public partial class DataBase : Form
     {
+        string user;
         DataTable dataTable;
         string dataBaseFile;
         List<string> ids;
-        string[] columns = { "ID", "Full Name"};
+        string[] columns = { "ID", "Full Name" };
 
-        public DataBase()
+        public DataBase(string user)
         {
+            this.user = user;
             InitializeComponent();
             dataTable = new DataTable();
             ids = new List<string>();
             InitDataTable();
             dataGridView1.DataSource = dataTable;
             dataBaseFile = "students.csv";
+            if (user != "admin")
+            {
+                this.AddButton.Hide();
+                this.DeleteButton.Hide();
+                this.UpdateButton.Hide();
+                dataGridView1.ReadOnly = true;
+            }
         }
 
         private void InitDataTable()
@@ -72,7 +81,7 @@ namespace Cast128_CS
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
                 UpdateDataBase();
                 MessageBox.Show("Data base updated successfully", "Success");
@@ -85,7 +94,8 @@ namespace Cast128_CS
 
         private void DataBase_FormClosing(object sender, FormClosingEventArgs e)
         {
-            UpdateDataBase();
+            if (user == "admin")
+                UpdateDataBase();
         }
 
         private void UpdateDataBase()

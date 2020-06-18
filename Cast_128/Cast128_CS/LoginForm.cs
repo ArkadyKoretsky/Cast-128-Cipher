@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -37,9 +38,9 @@ namespace Cast128_CS
             this.Close();
         }
         
-        private void OpenDataBase()
+        private void OpenDataBase(string user)
         {
-            Application.Run(new DataBase());
+            Application.Run(new DataBase(user));
         }
 
         private void LoginForm_KeyDown(object sender, KeyEventArgs e)
@@ -54,12 +55,12 @@ namespace Cast128_CS
             bool wrongUserNameOrPassword = true;
             foreach (string user in users)
             {
-                string[] usernameAndPassword = user.Split(',');
-                if (UsernameTextBox.Text == usernameAndPassword[0] && PassowrdTextBox.Text == usernameAndPassword[1])
+                string[] userData = user.Split(',');
+                if (UsernameTextBox.Text == userData[0] && PassowrdTextBox.Text == userData[1])
                 {
                     wrongUserNameOrPassword = false;
                     this.Close();
-                    thread = new Thread(OpenDataBase);
+                    thread = new Thread(() => OpenDataBase(userData[2]));
                     thread.SetApartmentState(ApartmentState.STA);
                     thread.Start();
                     break;
