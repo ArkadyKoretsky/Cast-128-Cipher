@@ -19,8 +19,12 @@ namespace Cast128_CS
         List<string> ids;
         string[] columns = { "ID", "Full Name" };
 
+        Cast_128 cast_128;
+
+
         public DataBase(string user)
         {
+            cast_128 = new Cast_128();
             this.user = user;
             InitializeComponent();
             dataTable = new DataTable();
@@ -45,6 +49,9 @@ namespace Cast128_CS
 
         private void DataBase_Load(object sender, EventArgs e)
         {
+            //string key = "SohamArkadyMati1";
+            string key = "1234567891234560";
+            //string dataString =cast_128.RunCast128(dataBaseFile, key, true);
             string[] students = File.ReadAllLines(dataBaseFile);
             foreach (string student in students)
             {
