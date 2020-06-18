@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Cast128_CS
 {
-    class Cast_128
+    public class Cast_128
     {
         public readonly int roundCount = 16;
 
@@ -77,7 +77,7 @@ namespace Cast128_CS
                 {
                     foreach (Block block in blocks)
                     {
-                        encrypredBlocks.Add(encrypt(block));
+                        encrypredBlocks.Add(Encrypt(block));
                     }
                 }
                 #region Write To Output File
@@ -115,35 +115,34 @@ namespace Cast128_CS
             }
             return "Seccuss";
         }
-        private List<Block> DivideToBlocks(char[] fileText)
+        public static List<Block> DivideToBlocks(char[] fileText)
         {
             // blocks to return
             List<Block> retBlocks = new List<Block>();
 
             byte[] textbytes = fileText.Select(c => (byte)c).ToArray();
-            byte[] tmpbytes = new byte[8];
 
-            for (int i = 0; i < Math.Ceiling(fileText.Length / 64.0); ++i)
+            for (int i = 0; i < Math.Ceiling(fileText.Length*8 / 64.0); ++i)
             {
                 Block block = new Block();
                 block.msg = new uint[2];
 
-                block.msg[0] = BitConverter.ToUInt32(textbytes, 0);
-                block.msg[1] = BitConverter.ToUInt32(textbytes, 32);
+                block.msg[0] = BitConverter.ToUInt32(textbytes, 0 + 8 * i);
+                block.msg[1] = BitConverter.ToUInt32(textbytes, 4 + 8 * i);
 
                 retBlocks.Add(block);
             }
             return retBlocks;
         }
-        private Block encrypt(Block block)
+        public Block Encrypt(Block block)
         {
            return Cast128_On(block, ENCRYPT);
         }
-        private Block decrypt(Block block)
+        public Block decrypt(Block block)
         {
             return Cast128_On(block, DECRYPT);
         }
-        private Block Cast128_On(Block block, bool isEncrypt)
+        public Block Cast128_On(Block block, bool isEncrypt)
         {
             //matih
             //key - get key!
@@ -170,7 +169,7 @@ namespace Cast128_CS
                 return resBlocks;
             
         }
-        private void MakeRound(int i)
+        public void MakeRound(int i)
         {
             L[i] = R[i-1];
             if (type1.Contains(i))
@@ -186,7 +185,7 @@ namespace Cast128_CS
                 R[i] = L[i - 1] ^ f3(i);
             }
         }
-        private uint f1(int i)
+        public uint f1(int i)
         {
             //Type 1:  I = ((Kmi + D) <<< Kri)
             //         f = ((S1[Ia] ^ S2[Ib]) - S3[Ic]) + S4[Id]
@@ -203,7 +202,7 @@ namespace Cast128_CS
             return (((S1[Ia] ^ S2[Ib]) - S3[Ic]) + S4[Id]);
 
         }
-        private uint f2(int i)
+        public uint f2(int i)
         {
             //Type 2:  I = ((Kmi ^ D) <<< Kri)
             //    f = ((S1[Ia] - S2[Ib]) + S3[Ic]) ^ S4[Id]
@@ -220,7 +219,7 @@ namespace Cast128_CS
             return (((S1[Ia] - S2[Ib]) + S3[Ic]) ^ S4[Id]);
 
         }
-        private uint f3(int i)
+        public uint f3(int i)
         {
             //Type 3:  I = ((Kmi - D) <<< Kri)
             //    f = ((S1[Ia] + S2[Ib]) ^ S3[Ic]) - S4[Id]
@@ -237,23 +236,23 @@ namespace Cast128_CS
             return (((S1[Ia] + S2[Ib]) ^ S3[Ic]) - S4[Id]);
 
         }
-        private void splitI(uint I, ref byte Ia, ref byte Ib, ref byte Ic, ref byte Id)
+        public static void splitI(uint I, ref byte Ia, ref byte Ib, ref byte Ic, ref byte Id)
         {
             Ia = Convert.ToByte((I >> 24) & 0xFF);
             Ib = Convert.ToByte((I >> 16) & 0xFF);
             Ic = Convert.ToByte((I >> 8) & 0xFF);
             Id = Convert.ToByte((I) & 0xFF);
         }
-        private uint cyclicShift(uint x, byte shift)
+        public static uint cyclicShift(uint x, byte shift)
         {
             byte s = Convert.ToByte(shift % 32);
             return (x << s) | (x >> (32 - s));
         }
-        private uint sumMod2_32(uint a, uint b)
+        public static uint sumMod2_32(uint a, uint b)
         {
             return Convert.ToUInt32((Convert.ToUInt64(a) + Convert.ToUInt64(b)) % MOD_2_32);
         }
-        private uint subtractMod2_32(uint a, uint b)
+        public static uint subtractMod2_32(uint a, uint b)
         {
             if (b <= a)
             {
@@ -262,7 +261,7 @@ namespace Cast128_CS
 
             return Convert.ToUInt32((MOD_2_32 + Convert.ToUInt64(a)) - Convert.ToUInt64(b));
         }
-        private void WriteToUser(string v)
+        public void WriteToUser(string v)
         {
             Console.WriteLine(v);
         }
