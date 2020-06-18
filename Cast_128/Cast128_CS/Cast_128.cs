@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Cast128_CS
@@ -40,72 +41,31 @@ namespace Cast128_CS
         public Cast_128()
         {
         }
-        public string RunCast128(string inputfileName,string outputfileName, uint key,bool toDecryptFile=false)
+        public string RunCast128(string inputfileName, string key,bool toDecryptFile=false)
         {
             try
             {
-                #region Read File And Convert To char Array
-                if (!File.Exists(inputfileName))
-                {
-                    throw new Exception("File not exists!");
-                }
-                string fileText = File.ReadAllText(inputfileName);
-                int fileTextMod8 = fileText.Length % 8;
-                char[] fileText_charArray;
-
-                if (fileTextMod8 != 0)
-                {
-                    fileText_charArray = new char[fileText.Length + 8 - fileTextMod8];
-                }
-                else
-                {
-                    fileText_charArray = new char[fileText.Length];
-                }
-                fileText.ToCharArray().CopyTo(fileText_charArray, 0);
-                #endregion
+                char[] fileText_charArray = ReadFromFileAndGetCharArray(inputfileName);
 
                 List<Block> blocks = DivideToBlocks(fileText_charArray);
-                List<Block> encrypredBlocks = new List<Block>();
+                List<Block> encrypredOrDecryoBlocks = new List<Block>();
                 if (toDecryptFile)
                 {
                     foreach (Block block in blocks)
                     {
-                        encrypredBlocks.Add(decrypt(block));
+                        encrypredOrDecryoBlocks.Add(decrypt(block));
                     }
                 }
                 else
                 {
                     foreach (Block block in blocks)
                     {
-                        encrypredBlocks.Add(Encrypt(block));
+                        encrypredOrDecryoBlocks.Add(Encrypt(block));
                     }
                 }
-                #region Write To Output File
-                //matih
-                //add message to if exists outputfileName
-                if (File.Exists(outputfileName))
-                {
-                    DialogResult d =MessageBox.Show("There is already file with the name " + outputfileName + "\n do you want to replace it?",
-                        "save output file", MessageBoxButtons.YesNo);
-                    if (d==DialogResult.Yes)
-                    {
-                        File.Delete(outputfileName);
-                    }
-                    else
-                    {
-                        return "Change out put name file";
-                    }
-                }
-                using (StreamWriter sw = File.CreateText(outputfileName))
-                {
-                    foreach (Block block in encrypredBlocks)
-                    {
-                        sw.Write(block.msg[0]);
-                        sw.Write(block.msg[1]);
-                    }
-                }
-
-                #endregion
+                string outputData = GetBlocksString(encrypredOrDecryoBlocks);
+                string[] outputDataAfterSplit = outputData.Split('\n');
+                return outputData;
 
             }
             catch (Exception e)
@@ -113,8 +73,46 @@ namespace Cast128_CS
                 WriteToUser("Error e---> " + e.Message);
                 return null;
             }
-            return "Seccuss";
         }
+
+        private char[] ReadFromFileAndGetCharArray(string inputfileName)
+        {
+            if (!File.Exists(inputfileName))
+            {
+                throw new Exception("File not exists!");
+            }
+            string fileText = File.ReadAllText(inputfileName);
+            int fileTextMod8 = fileText.Length % 8;
+            char[] fileText_charArray;
+
+            if (fileTextMod8 != 0)
+            {
+                fileText_charArray = new char[fileText.Length + 8 - fileTextMod8];
+            }
+            else
+            {
+                fileText_charArray = new char[fileText.Length];
+            }
+            fileText.ToCharArray().CopyTo(fileText_charArray, 0);
+            return fileText_charArray;
+        }
+
+        private string GetBlocksString(List<Block> encrypredOrDecryoBlocks)
+        {
+            byte[] bytesData;
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (Block block in encrypredOrDecryoBlocks)
+            {
+                bytesData = BitConverter.GetBytes(block.msg[0]);
+                bytesData.Select(b => stringBuilder.Append((char)b));
+
+                bytesData = BitConverter.GetBytes(block.msg[1]);
+                bytesData.Select(b => stringBuilder.Append((char)b));
+            }
+
+            return stringBuilder.ToString();
+        }
+
         public static List<Block> DivideToBlocks(char[] fileText)
         {
             // blocks to return

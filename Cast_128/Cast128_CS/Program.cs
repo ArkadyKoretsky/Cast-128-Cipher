@@ -11,9 +11,9 @@ namespace Cast128_CS
     {
         static void Main(string[] args)
         {
-            KeysCreator key = new KeysCreator("60638470282");
-            //Cast_128 e = new Cast_128();
-            //e.Encrypt("Matih.txt");
+           // KeysCreator key = new KeysCreator("60638470282");
+            Cast_128 e = new Cast_128();
+            e.RunCast128("Matih.txt", "60638470282");
         }
     }
 }

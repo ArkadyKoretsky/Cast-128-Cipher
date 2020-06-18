@@ -45,7 +45,12 @@ namespace Cast128_CS.Tests
         [TestMethod()]
         public void encryptTest()
         {
-
+            Cast_128 cast_128 = new Cast_128();
+            Cast_128.Block block = new Cast_128.Block();
+            block.msg = new uint[2];
+            //block.msg[0] =;
+            //block.msg[1] =;
+            cast_128.Encrypt(block);
             Assert.Fail();
         }
 
