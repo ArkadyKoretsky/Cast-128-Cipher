@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
  * Encryption - 
  * Class for encryption process  
  */
@@ -57,19 +56,11 @@ namespace Cast128_CS
         public KeysCreator(String mainKey)
         {
             this.mainKey = mainKey;
+            Boolean val = correct_len(mainKey);
+            
 
-            //binKey = finalGetBinaryValue(this.mainKey);//convert  binart key
-            Boolean val=correct_len(this.mainKey);
-            if (!val) throw new System.ArgumentException("Too small argumet", "mainKey");
-            // { "no in the term"}
-            //Console.WriteLine("Too small key");
-            padding();
-            /*
-            x0x1x2x3[4] = Convert.ToUInt32(binKey.Substring(0, 32), 2);
-            x4x5x6x7[4] = Convert.ToUInt32(binKey.Substring(32, 32), 2);
-            x8x9xAxB[4] = Convert.ToUInt32(binKey.Substring(64, 32), 2);
-            xCxDxExF[4] = Convert.ToUInt32(binKey.Substring(96, 32), 2);
-            */
+            if (!val) throw new System.ArgumentException("Too small or too big argumet", "mainKey");
+            toBinArray();
 
             x0x1x2x3 = Convert.ToUInt32(binKey.Substring(0, 32), 2);
             x4x5x6x7 = Convert.ToUInt32(binKey.Substring(32, 32), 2);
@@ -130,7 +121,26 @@ namespace Cast128_CS
 
         }
 
+         void toBinArray()
+        {
+            for (int i = 0; i < mainKey.Length; i++)
+            {
+                Byte toByte = Convert.ToByte(mainKey[i]);
+                String toString = Convert.ToString(toByte);//ascii value in string
+                binKey = binKey + paddingTo8(finalGetBinaryValue(toString));
+            }
+            paddingTo128();
+           
+        }
+ 
 
+        Boolean correct_len(String key)
+        {
+            key_len = mainKey.Length * 8;
+            if (key_len <= 80 && key_len >= 40)
+                return true;
+            else return false;
+        }
         void SeparateByte(ref uint b0, ref uint b1, ref uint b2, ref uint b3, uint b0b1b2b3)
         {
 
@@ -159,32 +169,34 @@ namespace Cast128_CS
             return result;
 
         }
+      
 
-        Boolean correct_len(String key)
+        String paddingTo8(String ch)
         {
-            //
-            //string x = "matih";
-            //BitConverter.GetBytes()
-            //
-            binKey =finalGetBinaryValue(this.mainKey);
-            key_len =binKey.Length;
-            //padding();
-            if (key_len <= 80 && key_len >= 40)
-                return true;
-             else return false;
+            int len = ch.Length;
+            //key_len = len;
+            int pad_len = 8 - len;
+            if (pad_len > 0)
+            {
+                String str = "";
+                for (int i = 0; i < pad_len; i++)
+                    str = str + '0';
+                ch = str + ch;
+                //return str + num;
+            }
+            return ch;
         }
-
-         void padding()
+        void paddingTo128()
         {
             int len = binKey.Length;
-            key_len = len;
+            //key_len = len;
             int pad_len = 128 - len;
             if (pad_len > 0)
             {
                 String str = "";
                 for (int i = 0; i < pad_len; i++)
                     str = str + '0';
-                binKey = str + binKey;
+                binKey =  binKey+str ;
                 //return str + num;
             }
         }

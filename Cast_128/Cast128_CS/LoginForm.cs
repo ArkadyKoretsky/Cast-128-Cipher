@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace Cast128_CS
 {
