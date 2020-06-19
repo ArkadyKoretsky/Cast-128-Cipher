@@ -26,6 +26,7 @@ namespace Cast128_CS
         {
             cast_128 = new Cast_128();
             //cast_128.RunCast128
+
             this.user = user;
             InitializeComponent();
             dataTable = new DataTable();
@@ -114,7 +115,8 @@ namespace Cast128_CS
                 string[] dataRow = new string[columns.Length];
                 for (int i = 0; i < columns.Length; i++)
                     dataRow[i] = row[columns[i]].ToString();
-                File.AppendAllText(dataBaseFile, string.Join(",", dataRow) + "\n");
+                string joinString = string.Join(",", dataRow) + "\n";
+                File.AppendAllText(dataBaseFile, cast_128.RunCast128(joinString, "ArkadyShohamMati"));
             }
         }
     }

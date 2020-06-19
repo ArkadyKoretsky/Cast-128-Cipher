@@ -43,13 +43,12 @@ namespace Cast128_CS
         {
             
         }
-        public string[] RunCast128(string inputfileName, string key, bool toDecryptFile = false)
+        public string/*[]*/ RunCast128(string inputData, string key, bool toDecryptFile = false)
         {
             try
             {
                 this.key = new KeysCreator(key);
-
-                char[] fileText_charArray = ReadFromFileAndGetCharArray(inputfileName);
+                char[] fileText_charArray = inputData.ToCharArray();
 
                 List<Block> blocks = DivideToBlocks(fileText_charArray);
                 List<Block> encrypredOrDecryoBlocks = new List<Block>();
@@ -68,8 +67,8 @@ namespace Cast128_CS
                     }
                 }
                 string outputData = GetBlocksString(encrypredOrDecryoBlocks);
-                string[] outputDataAfterSplit = outputData.Split('\n');
-                return outputDataAfterSplit;
+               // string[] outputDataAfterSplit = outputData.Split('\n');
+                return outputData;
 
             }
             catch (Exception e)
