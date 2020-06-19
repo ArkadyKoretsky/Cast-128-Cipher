@@ -12,12 +12,12 @@ namespace Cast128_CS
     {
         static void Main(string[] args)
         {
+            //Cast_128 e = new Cast_128();
+            //string[] strResult=e.RunCast128("Matih.txt","MatiArkadyShoham");
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
-
-            //Encryption e = new Encryption();
-            //e.Encrypt("Matih.txt");
         }
     }
 }

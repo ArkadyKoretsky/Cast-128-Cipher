@@ -25,6 +25,7 @@ namespace Cast128_CS
         public DataBase(string user)
         {
             cast_128 = new Cast_128();
+            //cast_128.RunCast128
             this.user = user;
             InitializeComponent();
             dataTable = new DataTable();
