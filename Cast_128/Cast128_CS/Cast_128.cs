@@ -160,10 +160,10 @@ namespace Cast128_CS
             R[0] = block.msg[1];
 
             int rindex;
-            for (int i = 1; i <= roundCount; i++)
+            for (int i = 0; i < roundCount; i++)
             {
                 rindex = isEncrypt ? (roundCount - 1 - i) : i;
-                MakeRound(rindex);
+                MakeRound(rindex,i);
             }
 
             Block resBlocks = new Block();
@@ -175,30 +175,30 @@ namespace Cast128_CS
             return resBlocks;
 
         }
-        public void MakeRound(int i)
+        public void MakeRound(int index,int i)
         {
             L[i] = R[i - 1];
             switch (i % 3)
             {
                 case 0:
-                    R[i] = L[i - 1] ^ f3(i);
+                    R[i] = L[i - 1] ^ f3(i,index);
                     break;
                 case 1:
-                    R[i] = L[i - 1] ^ f1(i);
+                    R[i] = L[i - 1] ^ f1(i,index);
                     break;
                 case 2:
-                    R[i] = L[i - 1] ^ f2(i);
+                    R[i] = L[i - 1] ^ f2(i,index);
                     break;
                 default:
                     break;
             }
         }
-        public uint f1(int i)
+        public uint f1(int i, int index)
         {
             //Type 1:  I = ((Kmi + D) <<< Kri)
             //         f = ((S1[Ia] ^ S2[Ib]) - S3[Ic]) + S4[Id]
 
-            uint I = cyclicShift(sumMod2_32(key.km[i-1], R[i - 1]), key.kr[i-1]);
+            uint I = cyclicShift(sumMod2_32(key.km[index-1], R[i - 1]), key.kr[index-1]);
 
             byte Ia = 0;
             byte Ib = 0;
@@ -210,12 +210,12 @@ namespace Cast128_CS
             return (((S1[Ia] ^ S2[Ib]) - S3[Ic]) + S4[Id]);
 
         }
-        public uint f2(int i)
+        public uint f2(int i, int index)
         {
             //Type 2:  I = ((Kmi ^ D) <<< Kri)
             //    f = ((S1[Ia] - S2[Ib]) + S3[Ic]) ^ S4[Id]
 
-            uint I = cyclicShift((key.km[i-1] ^ R[i - 1]), key.kr[i-1]);
+            uint I = cyclicShift((key.km[index-1] ^ R[i - 1]), key.kr[index-1]);
 
             byte Ia = 0;
             byte Ib = 0;
@@ -227,12 +227,12 @@ namespace Cast128_CS
             return (((S1[Ia] - S2[Ib]) + S3[Ic]) ^ S4[Id]);
 
         }
-        public uint f3(int i)
+        public uint f3(int i,int index)
         {
             //Type 3:  I = ((Kmi - D) <<< Kri)
             //    f = ((S1[Ia] + S2[Ib]) ^ S3[Ic]) - S4[Id]
 
-            uint I = cyclicShift(subtractMod2_32(key.km[i-1], R[i - 1]), key.kr[i-1]);
+            uint I = cyclicShift(subtractMod2_32(key.km[index - 1], R[i - 1]), key.kr[index - 1]);
 
             byte Ia = 0;
             byte Ib = 0;
