@@ -26,7 +26,6 @@ namespace Cast128_CS
         public DataBase(string user)
         {
             cast_128 = new Cast_128();
-            //cast_128.RunCast128
 
             this.user = user;
             InitializeComponent();
@@ -56,8 +55,6 @@ namespace Cast128_CS
             string fileText = cast_128.RunCast128(File.ReadAllText(dataBaseFile), key, true);
             string[] students = fileText.Split('\n');
 
-            //string[] students = File.ReadAllLines(dataBaseFile);
-
             foreach (string student in students)
             {
                 string studentAfterTrim = student.Trim('\0');
@@ -68,11 +65,6 @@ namespace Cast128_CS
                     dataTable.Rows.Add(row);
                 }
             }
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void AddButton_Click(object sender, EventArgs e)

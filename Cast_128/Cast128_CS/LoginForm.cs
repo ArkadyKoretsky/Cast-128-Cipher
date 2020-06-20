@@ -8,24 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Security.Cryptography; // for generating hashed password
 
 namespace Cast128_CS
 {
     public partial class LoginForm : Form
     {
         string UsersDBFile;
-        string password;
+        string hashedPassword;
         Thread thread;
 
         public LoginForm()
         {
             InitializeComponent();
             UsersDBFile = "users.csv";
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
@@ -37,7 +33,7 @@ namespace Cast128_CS
         {
             this.Close();
         }
-        
+
         private void OpenDataBase(string user)
         {
             Application.Run(new DataBase(user));
@@ -51,29 +47,38 @@ namespace Cast128_CS
 
         private void LoginVerification()
         {
-            string[] users = File.ReadAllLines(UsersDBFile);
-            bool wrongUserNameOrPassword = true;
-            foreach (string user in users)
+            if (UsernameTextBox.Text == "" || UsernameTextBox.Text == null || PassowrdTextBox.Text == "" || PassowrdTextBox.Text == null)
+                MessageBox.Show("Please fill all the fields", "Error");
+            else
             {
-                string[] userData = user.Split(',');
-                password = PassowrdTextBox.Text;
-                if (UsernameTextBox.Text == userData[0] && password.GetHashCode().ToString() == userData[1])
+                string[] users = File.ReadAllLines(UsersDBFile);
+                bool wrongUserNameOrPassword = true;
+                foreach (string user in users)
                 {
-                    wrongUserNameOrPassword = false;
-                    this.Close();
-                    thread = new Thread(() => OpenDataBase(userData[2]));
-                    thread.SetApartmentState(ApartmentState.STA);
-                    thread.Start();
-                    break;
+                    string[] userData = user.Split(',');
+                    hashedPassword = GetHash(PassowrdTextBox.Text, UsernameTextBox.Text);
+                    if (UsernameTextBox.Text == userData[0] && hashedPassword == userData[1])
+                    {
+                        wrongUserNameOrPassword = false;
+                        this.Close();
+                        thread = new Thread(() => OpenDataBase(userData[2]));
+                        thread.SetApartmentState(ApartmentState.STA);
+                        thread.Start();
+                        break;
+                    }
                 }
+                if (wrongUserNameOrPassword)
+                    MessageBox.Show("Wrong user name or password", "Error");
             }
-            if (wrongUserNameOrPassword)
-                MessageBox.Show("Wrong user name or password", "Error");
         }
 
-        public override int GetHashCode()
+        private string GetHash(string password, string salt)
         {
-            return 2049348873 + EqualityComparer<string>.Default.GetHashCode(password);
+            byte[] passwordAndSaltBytes = Encoding.UTF8.GetBytes(password + salt);
+            byte[] hashBytes = new SHA256Managed().ComputeHash(passwordAndSaltBytes);
+            string hashString = Convert.ToBase64String(hashBytes);
+
+            return hashString;
         }
     }
 }
