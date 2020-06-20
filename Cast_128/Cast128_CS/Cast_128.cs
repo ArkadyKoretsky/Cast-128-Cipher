@@ -41,18 +41,19 @@ namespace Cast128_CS
 
         public Cast_128()
         {
-            
+
         }
         public string/*[]*/ RunCast128(string inputData, string key, bool toDecryptFile = false)
         {
             try
             {
-                if (key.Length<10)
+                if (key.Length < 10)
                 {
                     roundCount = 12;
                 }
                 this.key = new KeysCreator(key);
-                char[] fileText_charArray = inputData.ToCharArray();
+                //char[] fileText_charArray = inputData.ToCharArray();
+                char[] fileText_charArray = GetCharArray(inputData);
 
                 List<Block> blocks = DivideToBlocks(fileText_charArray);
                 List<Block> encrypredOrDecryoBlocks = new List<Block>();
@@ -71,7 +72,7 @@ namespace Cast128_CS
                     }
                 }
                 string outputData = GetBlocksString(encrypredOrDecryoBlocks);
-               // string[] outputDataAfterSplit = outputData.Split('\n');
+                // string[] outputDataAfterSplit = outputData.Split('\n');
                 return outputData;
 
             }
@@ -82,13 +83,13 @@ namespace Cast128_CS
             }
         }
 
-        private char[] ReadFromFileAndGetCharArray(string inputfileName)
+        private char[] GetCharArray(string fileText)
         {
-            if (!File.Exists(inputfileName))
-            {
-                throw new Exception("File not exists!");
-            }
-            string fileText = File.ReadAllText(inputfileName);
+            //if (!File.Exists(inputfileName))
+            //{
+            //    throw new Exception("File not exists!");
+            //}
+            //string fileText = File.ReadAllText(inputfileName);
             int fileTextMod8 = fileText.Length % 8;
             char[] fileText_charArray;
 
@@ -164,10 +165,10 @@ namespace Cast128_CS
             R[0] = block.msg[1];
 
             int rindex;
-            for (int i = 0; i < roundCount; i++)
+            for (int i = 1; i <= roundCount; i++)
             {
-                rindex = isEncrypt ? (roundCount - 1 - i) : i;
-                MakeRound(rindex,i);
+                rindex = isEncrypt ? (roundCount - i + 1) : i;
+                MakeRound(rindex, i - 1);
             }
 
             Block resBlocks = new Block();
@@ -179,19 +180,19 @@ namespace Cast128_CS
             return resBlocks;
 
         }
-        public void MakeRound(int index,int i)
+        public void MakeRound(int index, int i)
         {
-            L[i+1] = R[i];
+            L[i + 1] = R[i];
             switch (index % 3)
             {
                 case 0:
-                    R[i+1] = L[i] ^ f3(i,index);
+                    R[i + 1] = L[i] ^ f3(i, index - 1);
                     break;
                 case 1:
-                    R[i+1] = L[i] ^ f1(i,index);
+                    R[i + 1] = L[i] ^ f1(i, index - 1);
                     break;
                 case 2:
-                    R[i+1] = L[i] ^ f2(i,index);
+                    R[i + 1] = L[i] ^ f2(i, index - 1);
                     break;
                 default:
                     break;
@@ -202,7 +203,7 @@ namespace Cast128_CS
             //Type 1:  I = ((Kmi + D) <<< Kri)
             //         f = ((S1[Ia] ^ S2[Ib]) - S3[Ic]) + S4[Id]
 
-            uint I = cyclicShift(sumMod2_32(key.km[index-1], R[i]), key.kr[index-1]);
+            uint I = cyclicShift(sumMod2_32(key.km[index], R[i]), key.kr[index]);
 
             byte Ia = 0;
             byte Ib = 0;
@@ -219,7 +220,7 @@ namespace Cast128_CS
             //Type 2:  I = ((Kmi ^ D) <<< Kri)
             //    f = ((S1[Ia] - S2[Ib]) + S3[Ic]) ^ S4[Id]
 
-            uint I = cyclicShift((key.km[index-1] ^ R[i]), key.kr[index-1]);
+            uint I = cyclicShift((key.km[index] ^ R[i]), key.kr[index]);
 
             byte Ia = 0;
             byte Ib = 0;
@@ -231,12 +232,12 @@ namespace Cast128_CS
             return (((S1[Ia] - S2[Ib]) + S3[Ic]) ^ S4[Id]);
 
         }
-        public uint f3(int i,int index)
+        public uint f3(int i, int index)
         {
             //Type 3:  I = ((Kmi - D) <<< Kri)
             //    f = ((S1[Ia] + S2[Ib]) ^ S3[Ic]) - S4[Id]
 
-            uint I = cyclicShift(subtractMod2_32(key.km[index - 1], R[i]), key.kr[index - 1]);
+            uint I = cyclicShift(subtractMod2_32(key.km[index], R[i]), key.kr[index]);
 
             byte Ia = 0;
             byte Ib = 0;

@@ -51,9 +51,12 @@ namespace Cast128_CS
 
         private void DataBase_Load(object sender, EventArgs e)
         {
-            string key = "ArkadyShohamMati";
-            string fileText =cast_128.RunCast128(File.ReadAllText(dataBaseFile), key, true);
-            string[] students = fileText.Split('\n');
+            //string key = "ArkadyShohamMati";
+            //string fileText =cast_128.RunCast128(File.ReadAllText(dataBaseFile), key, true);
+            //string[] students = fileText.Split('\n');
+
+            string[] students = File.ReadAllLines(dataBaseFile);
+
             foreach (string student in students)
             {
                 string[] row = student.Split(',');
