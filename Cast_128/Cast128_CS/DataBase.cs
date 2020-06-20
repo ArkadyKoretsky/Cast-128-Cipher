@@ -51,17 +51,21 @@ namespace Cast128_CS
 
         private void DataBase_Load(object sender, EventArgs e)
         {
-            //string key = "ArkadyShohamMati";
-            //string fileText =cast_128.RunCast128(File.ReadAllText(dataBaseFile), key, true);
-            //string[] students = fileText.Split('\n');
+            string key = "ArkadyShohamMati";
+            string fileText = cast_128.RunCast128(File.ReadAllText(dataBaseFile), key, true);
+            string[] students = fileText.Split('\n');
 
-            string[] students = File.ReadAllLines(dataBaseFile);
+            //string[] students = File.ReadAllLines(dataBaseFile);
 
             foreach (string student in students)
             {
-                string[] row = student.Split(',');
-                ids.Add(row[0]);
-                dataTable.Rows.Add(row);
+                string studentAfterTrim = student.Trim('\0');
+                if(studentAfterTrim != "" && studentAfterTrim !="," && studentAfterTrim!=null)
+                {
+                    string[] row = studentAfterTrim.Split(',');
+                    ids.Add(row[0]);
+                    dataTable.Rows.Add(row);
+                }
             }
         }
 
