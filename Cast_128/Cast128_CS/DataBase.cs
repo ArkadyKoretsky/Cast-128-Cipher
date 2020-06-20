@@ -18,6 +18,7 @@ namespace Cast128_CS
         string dataBaseFile;
         List<string> ids;
         string[] columns = { "ID", "Full Name" };
+        string key;
 
         Cast_128 cast_128;
 
@@ -41,6 +42,7 @@ namespace Cast128_CS
                 this.UpdateButton.Hide();
                 dataGridView1.ReadOnly = true;
             }
+            key = "ArkadyShohamMati";
         }
 
         private void InitDataTable()
@@ -51,7 +53,6 @@ namespace Cast128_CS
 
         private void DataBase_Load(object sender, EventArgs e)
         {
-            string key = "ArkadyShohamMati";
             string fileText = cast_128.RunCast128(File.ReadAllText(dataBaseFile), key, true);
             string[] students = fileText.Split('\n');
 
@@ -122,7 +123,7 @@ namespace Cast128_CS
                 for (int i = 0; i < columns.Length; i++)
                     dataRow[i] = row[columns[i]].ToString();
                 string joinString = string.Join(",", dataRow) + "\n";
-                File.AppendAllText(dataBaseFile, cast_128.RunCast128(joinString, "ArkadyShohamMati"));
+                File.AppendAllText(dataBaseFile, cast_128.RunCast128(joinString, key));
             }
         }
     }
