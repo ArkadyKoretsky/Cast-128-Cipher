@@ -15,7 +15,7 @@ namespace Cast128_CS
 {
     public class Cast_128
     {
-        public readonly int roundCount = 16;
+        public int roundCount = 16;
 
 
 
@@ -47,6 +47,10 @@ namespace Cast128_CS
         {
             try
             {
+                if (key.Length<10)
+                {
+                    roundCount = 12;
+                }
                 this.key = new KeysCreator(key);
                 char[] fileText_charArray = inputData.ToCharArray();
 
@@ -177,17 +181,17 @@ namespace Cast128_CS
         }
         public void MakeRound(int index,int i)
         {
-            L[i] = R[i - 1];
-            switch (i % 3)
+            L[i+1] = R[i];
+            switch (index % 3)
             {
                 case 0:
-                    R[i] = L[i - 1] ^ f3(i,index);
+                    R[i+1] = L[i] ^ f3(i,index);
                     break;
                 case 1:
-                    R[i] = L[i - 1] ^ f1(i,index);
+                    R[i+1] = L[i] ^ f1(i,index);
                     break;
                 case 2:
-                    R[i] = L[i - 1] ^ f2(i,index);
+                    R[i+1] = L[i] ^ f2(i,index);
                     break;
                 default:
                     break;
@@ -198,7 +202,7 @@ namespace Cast128_CS
             //Type 1:  I = ((Kmi + D) <<< Kri)
             //         f = ((S1[Ia] ^ S2[Ib]) - S3[Ic]) + S4[Id]
 
-            uint I = cyclicShift(sumMod2_32(key.km[index-1], R[i - 1]), key.kr[index-1]);
+            uint I = cyclicShift(sumMod2_32(key.km[index-1], R[i]), key.kr[index-1]);
 
             byte Ia = 0;
             byte Ib = 0;
@@ -215,7 +219,7 @@ namespace Cast128_CS
             //Type 2:  I = ((Kmi ^ D) <<< Kri)
             //    f = ((S1[Ia] - S2[Ib]) + S3[Ic]) ^ S4[Id]
 
-            uint I = cyclicShift((key.km[index-1] ^ R[i - 1]), key.kr[index-1]);
+            uint I = cyclicShift((key.km[index-1] ^ R[i]), key.kr[index-1]);
 
             byte Ia = 0;
             byte Ib = 0;
@@ -232,7 +236,7 @@ namespace Cast128_CS
             //Type 3:  I = ((Kmi - D) <<< Kri)
             //    f = ((S1[Ia] + S2[Ib]) ^ S3[Ic]) - S4[Id]
 
-            uint I = cyclicShift(subtractMod2_32(key.km[index - 1], R[i - 1]), key.kr[index - 1]);
+            uint I = cyclicShift(subtractMod2_32(key.km[index - 1], R[i]), key.kr[index - 1]);
 
             byte Ia = 0;
             byte Ib = 0;
